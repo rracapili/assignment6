@@ -1,0 +1,25 @@
+{
+  "name": "web700-app",
+  "version": "1.0.0",
+  "description": "assignment5",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rracapili/assignment5.git"
+  },
+  "author": "Ronald Capili",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rracapili/assignment5/issues"
+  },
+  "homepage": "https://github.com/rracapili/assignment5#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
+    "handlebars": "^4.7.8"
+  }
+}

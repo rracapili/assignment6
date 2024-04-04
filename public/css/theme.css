@@ -1,0 +1,64 @@
+/* Navigation Bar */
+.bg-light {
+  background-color: lightgray; /* Change background color */
+}
+
+.navbar-light .navbar-brand {
+  color: blue; /* Change text color */
+}
+
+.nav-link {
+  color: green; /* Change text color */
+}
+
+.nav-link:hover {
+  color: red; /* Change text color on hover */
+}
+
+/* Change color of active links to purple */
+.nav-link.active {
+  color: purple; /* Change text color for active links */
+}
+
+
+
+/* App Background */
+body, html {
+  background-color: #928686; /* Change background color */
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: blue; /* Change background color */
+  border-color: blue; /* Change border color */
+  color: white; /* Change text color */
+}
+
+.btn-primary:hover {
+  background-color: navy; /* Change background color on hover */
+  border-color: navy; /* Change border color on hover */
+}
+
+/* Table cells inside "odd" numbered table rows */
+table tr:nth-child(odd) td {
+  background-color: lightblue; /* Change background color */
+}
+
+/* All Heading elements */
+h1, h2, h3, h4, h5, h6 {
+  color: purple; /* Change text color */
+}
+
+/* All Anchor elements (HTML Links) */
+a {
+  color: blue; /* Change text color */
+}
+
+a:hover {
+  color: red; /* Change text color on hover */
+}
+
+/* Fieldset Legends */
+legend {
+  color: green; /* Change text color */
+}
