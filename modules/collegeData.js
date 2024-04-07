@@ -1,36 +1,6 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('./db_config');
 
-const fs = require("fs");
-
-class Data{
-    constructor(students, courses){
-        this.students = students;
-        this.courses = courses;
-    }
-}
-
-let dataCollection = null;
-
-module.exports.initialize = function () {
-    return new Promise( (resolve, reject) => {
-        fs.readFile('./data/courses.json','utf8', (err, courseData) => {
-            if (err) {
-                reject("unable to load courses"); return;
-            }
-
-            fs.readFile('./data/students.json','utf8', (err, studentData) => {
-                if (err) {
-                    reject("unable to load students"); return;
-                }
-
-                dataCollection = new Data(JSON.parse(studentData), JSON.parse(courseData));
-                resolve();
-            });
-        });
-    });
-}
-
 //'postgres://postgres:postgres@localhost:5432/week11'
 var sequelize = new Sequelize(dbConfig.PGDATABASE, dbConfig.PGUSER, dbConfig.PGPASSWORD, {
     host: dbConfig.PGHOST,
@@ -90,6 +60,16 @@ module.exports.deleteStudentByNum = function(studentNum) {
         return;
     }).catch((error) => {
         return Promise.reject("unable to delete student");
+    });
+};
+
+module.exports.initialize = function () {
+    return sequelize.sync().then(function () {
+        // The promise is resolved and the DB tables are created/updated
+        console.log("Database synced");
+    }).catch(function (error) {
+        // There was an error syncing the database
+        throw error;
     });
 };
 

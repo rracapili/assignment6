@@ -57,9 +57,6 @@ app.get("/", (req, res) => {
 // Add the express.urlencoded middleware
 app.use(express.urlencoded({ extended: true }));
 
-// Call the initialize function before setting up the routes
-Data.initialize().then(() => {
-    console.log("Data initialized. Setting up the routes.");
 
     // Serve static files from the 'views' directory
     app.use(express.static(path.join(__dirname, 'views')));
@@ -279,9 +276,11 @@ Data.initialize().then(() => {
         res.status(404).send("Page Not Found");
     });
 
-    // setup http server to listen on HTTP_PORT
-    app.listen(HTTP_PORT, ()=>{console.log("server listening on http://localhost:" + HTTP_PORT)});
 
-}).catch(err => {
-    console.error("Failed to initialize data:", err);
-});
+    Data.initialize().then(function(){
+        app.listen(HTTP_PORT, function(){
+            console.log("app listening on: " + HTTP_PORT)
+        });
+    }).catch(function(err){
+        console.log("unable to start server: " + err);
+    });
