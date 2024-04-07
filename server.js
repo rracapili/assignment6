@@ -271,6 +271,16 @@ app.use(express.urlencoded({ extended: true }));
         }
     });
 
+    // GET /student/delete/:studentNum
+    app.get("/student/delete/:studentNum", (req, res) => {
+        Data.deleteStudentByNum(req.params.studentNum).then(() => {
+            res.redirect("/students");
+        }).catch(err => {
+            console.log(err);
+            res.status(500).send("Unable to Remove Student / Student not found");
+        });
+    });
+
     // Catch-all route for handling unmatched routes
     app.use((req, res) => {
         res.status(404).send("Page Not Found");
