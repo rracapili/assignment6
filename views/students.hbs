@@ -14,26 +14,28 @@
                         <th>Address</th>
                         <th>Status</th>
                         <th>Course ID</th>
+                        <th>Actions</th> <!-- Added Actions column for remove buttons -->
                     </tr>
                 </thead>
                 <tbody>
                     {{#each students}}
-                        <tr>
-                            <td>{{this.studentNum}}</td>
-                            <td><a href="/student/{{this.studentNum}}">{{this.firstName}} {{this.lastName}}</a></td>
-                            <td><a href="mailto:{{this.email}}">{{this.email}}</a></td>
-                            <td>{{this.addressStreet}} {{this.addressCity}} {{this.addressProvince}}</td>
-                            <td>{{this.status}}</td>
-                            <td><a href="/students?course={{this.course}}">{{this.course}}</a></td>
-                        </tr>
+                    <tr>
+                        <td>{{this.studentNum}}</td>
+                        <td><a href="/student/{{this.studentNum}}">{{this.firstName}} {{this.lastName}}</a></td>
+                        <td><a href="mailto:{{this.email}}">{{this.email}}</a></td>
+                        <td>{{this.addressStreet}} {{this.addressCity}} {{this.addressProvince}}</td>
+                        <td>{{this.status}}</td>
+                        <td><a href="/students?course={{this.courseId}}">{{this.courseId}}</a></td>
+                        <td><a href="/student/delete/{{this.studentNum}}" class="btn btn-danger">Remove</a></td> <!-- Remove button -->
+                    </tr>
                     {{/each}}
                 </tbody>
             </table>
         </div>
         {{#unless students}}
-            <div class="col-md-12 text-center">
-                <strong>{{message}}</strong>
-            </div>
+        <div class="col-md-12 text-center">
+            <strong>{{message}}</strong>
+        </div>
         {{/unless}}
     </div>
 </div>
